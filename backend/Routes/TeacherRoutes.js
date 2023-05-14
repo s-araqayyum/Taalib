@@ -6,17 +6,17 @@ import express from "express";
 const router = express.Router();
 
 router.post("/addAssessment", addAssessment);
-router.post("/updateAssessment", updateAssessment);
-router.post("/deleteAssessment", deleteAssessment);
-router.post("/getAssessment", getAssessment);
+router.put("/updateAssessment", updateAssessment);
+router.delete("/deleteAssessment", deleteAssessment);
+router.get("/getAssessment", getAssessment);
 
 router.post("/generateGrade", generateGrade);
 
-router.post("/getAttendance", getAttendance);
+router.get("/getAttendance", getAttendance);
 router.post("/addAttendance", addAttendance);
-router.post("/updateAttendance", updateAttendance);
-router.post("/deleteAttendance", deleteAttendance);
+router.put("/updateAttendance", updateAttendance);
+router.delete("/deleteAttendance", deleteAttendance);
 
-router.post("/ViewAnonymizedFeedback", ViewAnonymizedFeedback);
+router.get("/ViewAnonymizedFeedback", ViewAnonymizedFeedback);
 
 export default router;
