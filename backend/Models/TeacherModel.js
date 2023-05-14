@@ -44,6 +44,10 @@ const TeacherSchema = new mongoose.Schema({
     joiningDate: {
       type: Date,
       default: Date.now
+    },
+    password: {
+      type: String,
+      required: true
     }
 },
 {timestamps:true});

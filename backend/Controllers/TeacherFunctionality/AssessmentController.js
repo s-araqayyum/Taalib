@@ -90,16 +90,40 @@ export const deleteAssessment = async (req, res) => {
 }
 
 export const generateGrade = async (req, res) => {
-    const { teacherID, courseID, typeOfAssessment, date } = req.body;
+    const { teacherID, courseID, studentID } = req.body;
   
     try {
-      const assessment = await Assesment.find({ teacherID, courseID, typeOfAssessment, date });
-  
+      const assessment = await Assesment.find({ teacherID, courseID, studentID });
+      
       if (!assessment) {
-        return res.status(404).json({ success: false, error: 'Assessment record not found ⨉' });
+        res.status(404).json({ success: false, error: 'Assessment record not found ⨉' });
       }
-  
-      res.status(200).json({ success: true, assessment });
+
+      let totalGrade = 0;
+      let totalWeightage = 0;
+
+      assessment.forEach((assessment) => {
+        const { obtainedMarks, totalMarks, weightage } = assessment;
+        totalGrade += (obtainedMarks / totalMarks) * weightage;
+        totalWeightage += weightage;
+      });
+
+      const finalGrade = (totalGrade / totalWeightage) * 100;
+
+      let letterGrade = '';
+      if (finalGrade >= 90) {
+        letterGrade = 'A';
+      } else if (finalGrade >= 80) {
+        letterGrade = 'B';
+      } else if (finalGrade >= 70) {
+        letterGrade = 'C';
+      } else if (finalGrade >= 60) {
+        letterGrade = 'D';
+      } else {
+        letterGrade = 'F';
+      }
+
+      res.status(200).json({ success: true, letterGrade });
     } catch (error) {
       res.status(500).json({ success: false, error: 'Failed to generate grade ⨉' });
     }
