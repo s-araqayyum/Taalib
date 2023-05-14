@@ -1,5 +1,5 @@
 import Attendance from "../../Models/AttendanceModel.js";
-import { Student } from "../../Models/StudentModel.js";
+import { Student, Course } from "../../Models/StudentModel.js";
 
 /*
 For a teacher managing attendance, the following functions are required:
@@ -29,21 +29,29 @@ export const addAttendance = async (req, res) => {
     const { teacherID, courseID, date } = req.body;
   
     try {
-      const students = await Student.find({ courses: { $elemMatch: { _id: courseID } } });
-  
-      const attendanceRecords = students.map((student) => ({
-        studentID: student._id,
-        teacherID,
-        courseID,
-        date,
-        isPresent: false,
-      }));
-  
-      const createdAttendance = await Attendance.create(attendanceRecords);
-  
-      res.status(201).json({ success: true, attendance: createdAttendance });
-    } catch (error) {
-      res.status(500).json({ success: false, error: 'Failed to create attendance ⨉' });
+      const students = await Student.find();
+      for (const student of students) {
+        for (const course of student.courses) {
+          const wantedCourse = await Course.findOne({ name: course.name });
+          if (wantedCourse != null) {
+            if(wantedCourse._id == courseID){
+              const attendanceRecords = students.map((student) => ({
+                studentID: student._id,
+                teacherID,
+                courseID,
+                date,
+                isPresent: false,
+              }));
+          
+              const createdAttendance = await Attendance.create(attendanceRecords);
+
+              res.status(201).json({ success: true, attendance: createdAttendance });
+            }
+          }
+        }
+      }
+    } catch (err) {
+      res.status(500).json({ error: err });
     }
 };
 
@@ -53,9 +61,11 @@ export const updateAttendance = async (req, res) => {
   try {
     const attendance = await Attendance.findOneAndUpdate(
       { studentID, teacherID, courseID, date },
-      { $set: { isPresent } },
+      { $set: { isPresent: true } },
       { new: true }
-    );
+    );    
+
+    console.log(attendance)
 
     if (!attendance) {
       return res.status(404).json({ success: false, error: 'Attendance record not found ⨉' });

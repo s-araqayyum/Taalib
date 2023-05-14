@@ -12,6 +12,10 @@ const FeedbackSchema = new mongoose.Schema({
     teacherID: {
         type: String,
         required: true
+    },
+    courseID: {
+        type: String,
+        required: true
     }
 });
 

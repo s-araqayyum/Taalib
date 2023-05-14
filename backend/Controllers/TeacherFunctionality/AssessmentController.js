@@ -1,5 +1,5 @@
 import Assesment from "../../Models/AssessmentModel.js";
-import { Student } from "../../Models/StudentModel.js";
+import { Student, Course } from "../../Models/StudentModel.js";
 
 /*
 For a teacher managing assessments, the following functions are required:
@@ -26,24 +26,31 @@ export const addAssessment = async (req, res) => {
     const { teacherID, courseID, typeOfAssessment, totalMarks, weightage, date } = req.body;
   
     try {
-      const students = await Student.find({ courses: { $elemMatch: { _id: courseID } } });
-  
-      const assessmentRecords = students.map((student) => ({
-        studentID: student._id,
-        teacherID,
-        courseID,
-        typeOfAssessment,
-        totalMarks,
-        obtainedMarks: 0,
-        weightage,
-        date
-      }));
-  
-      const createdAssessment = await Assesment.create(assessmentRecords);
-  
-      res.status(201).json({ success: true, assessment: createdAssessment });
+      const students = await Student.find();
+      for (const student of students) {
+        for (const course of student.courses) {
+          const wantedCourse = await Course.findOne({ name: course.name });
+          if (wantedCourse != null) {
+            if(wantedCourse._id == courseID){
+              const assessmentRecords = students.map((student) => ({
+                studentID: student._id,
+                teacherID,
+                courseID,
+                typeOfAssessment,
+                totalMarks,
+                obtainedMarks: 0,
+                weightage,
+                date
+              }));
+          
+              const createdAssessment = await Assesment.create(assessmentRecords);
+              res.status(201).json({ success: true, assessment: createdAssessment });
+            }
+          }
+        }
+      }
     } catch (error) {
-      res.status(500).json({ success: false, error: 'Failed to create assessment ⨉' });
+      res.status(500).json({ success: false, error: 'Failed to create assessment item ⨉' });
     }
 }
 
@@ -76,7 +83,6 @@ export const deleteAssessment = async (req, res) => {
       if (!assessment) {
         return res.status(404).json({ success: false, error: 'Assessment record not found ⨉' });
       }
-  
       res.status(200).json({ success: true, assessment });
     } catch (error) {
       res.status(500).json({ success: false, error: 'Failed to delete assessment ⨉' });
