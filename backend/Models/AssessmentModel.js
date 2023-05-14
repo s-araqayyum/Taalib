@@ -28,6 +28,10 @@ const AssesmentSchema = new mongoose.Schema({
     teacherID: {
         type: String,
         required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 });
 

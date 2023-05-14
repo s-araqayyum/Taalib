@@ -3,6 +3,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors'
 
+import router from './Routes/TeacherRoutes.js';
+
 dotenv.config()
 
 const app = express()
@@ -17,6 +19,8 @@ mongoose
 .catch((err) => {
     console.log(err);
 })
+
+app.use('/teacher', router);
 
 app.use((req, res, next) => {
     console.log(`${req.method}, in ${req.url} - ${new Date().toISOString()}`);

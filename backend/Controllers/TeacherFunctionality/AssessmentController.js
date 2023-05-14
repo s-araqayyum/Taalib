@@ -23,7 +23,7 @@ export const getAssessment = (req, res) => {
 }
 
 export const addAssessment = async (req, res) => {
-    const { teacherID, courseID, typeOfAssessment, totalMarks } = req.body;
+    const { teacherID, courseID, typeOfAssessment, totalMarks, weightage, date } = req.body;
   
     try {
       const students = await Student.find({ courses: { $elemMatch: { _id: courseID } } });
@@ -35,6 +35,8 @@ export const addAssessment = async (req, res) => {
         typeOfAssessment,
         totalMarks,
         obtainedMarks: 0,
+        weightage,
+        date
       }));
   
       const createdAssessment = await Assesment.create(assessmentRecords);
@@ -46,21 +48,53 @@ export const addAssessment = async (req, res) => {
 }
 
 export const updateAssessment = async (req, res) => {
-    const { studentID, teacherID, courseID, typeOfAssessment, obtainedMarks } = req.body;
+    const { studentID, teacherID, courseID, typeOfAssessment, obtainedMarks, date } = req.body;
   
     try {
       const assessment = await Assesment.findOneAndUpdate(
-        { studentID, teacherID, courseID, typeOfAssessment },
+        { studentID, teacherID, courseID, typeOfAssessment, date },
         { $set: { obtainedMarks: obtainedMarks } },
         { new: true }
       );
   
       if (!assessment) {
-        return res.status(404).json({ success: false, error: 'Assessment record not found' });
+        return res.status(404).json({ success: false, error: 'Assessment record not found ⨉' });
       }
   
       res.status(200).json({ success: true, assessment });
     } catch (error) {
-      res.status(500).json({ success: false, error: 'Failed to update assessment' });
+      res.status(500).json({ success: false, error: 'Failed to update assessment ⨉' });
     }
 };
+
+export const deleteAssessment = async (req, res) => {
+    const { teacherID, courseID, typeOfAssessment, date } = req.body;
+  
+    try {
+      const assessment = await Assesment.deleteMany({ teacherID, courseID, typeOfAssessment, date });
+  
+      if (!assessment) {
+        return res.status(404).json({ success: false, error: 'Assessment record not found ⨉' });
+      }
+  
+      res.status(200).json({ success: true, assessment });
+    } catch (error) {
+      res.status(500).json({ success: false, error: 'Failed to delete assessment ⨉' });
+    }
+}
+
+export const generateGrade = async (req, res) => {
+    const { teacherID, courseID, typeOfAssessment, date } = req.body;
+  
+    try {
+      const assessment = await Assesment.find({ teacherID, courseID, typeOfAssessment, date });
+  
+      if (!assessment) {
+        return res.status(404).json({ success: false, error: 'Assessment record not found ⨉' });
+      }
+  
+      res.status(200).json({ success: true, assessment });
+    } catch (error) {
+      res.status(500).json({ success: false, error: 'Failed to generate grade ⨉' });
+    }
+}
