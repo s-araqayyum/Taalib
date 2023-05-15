@@ -13,6 +13,7 @@ a list-like manner, which is by default set to false.
 */
 
 export const getAttendance = (req, res) => {
+    console.log('req.body from node.js getAttendance:', req.body);
     let { date, teacherID, courseID } = req.body;
     Attendance.find({ date: date, teacherID: teacherID, courseID: courseID })
         .then((attendance) => {
@@ -26,7 +27,11 @@ export const getAttendance = (req, res) => {
 }
 
 export const addAttendance = async (req, res) => {
+    console.log('req.body from node.js addAttendance:', req.body);
     const { teacherID, courseID, date } = req.body;
+
+    let createdAttendance = null;
+    let attendanceCreated = false;
   
     try {
       const students = await Student.find();
@@ -43,12 +48,20 @@ export const addAttendance = async (req, res) => {
                 isPresent: false,
               }));
           
-              const createdAttendance = await Attendance.create(attendanceRecords);
-
-              res.status(201).json({ success: true, attendance: createdAttendance });
+              createdAttendance = await Attendance.create(attendanceRecords);
+              attendanceCreated = true;
+              break;
             }
           }
         }
+        if (attendanceCreated) {
+          break;
+        }
+      }
+      if (attendanceCreated) {
+        res.status(201).json({ success: true, attendance: createdAttendance });
+      } else {
+        res.status(404).json({ success: false, error: 'Attendance Record not found' });
       }
     } catch (err) {
       res.status(500).json({ error: err });
@@ -56,7 +69,9 @@ export const addAttendance = async (req, res) => {
 };
 
 export const updateAttendance = async (req, res) => {
-  const { studentID, teacherID, courseID, date, isPresent } = req.body;
+  console.log('Updating attendance record...');
+
+  const { studentID, teacherID, courseID, date } = req.body;
 
   try {
     const attendance = await Attendance.findOneAndUpdate(
@@ -65,18 +80,23 @@ export const updateAttendance = async (req, res) => {
       { new: true }
     );    
 
-    console.log(attendance)
+    console.log('Updated attendance:', attendance);
 
     if (!attendance) {
+      console.log('Attendance record not found');
       return res.status(404).json({ success: false, error: 'Attendance record not found ⨉' });
     }
+    console.log('Attendance record updated successfully');
     res.status(200).json({ success: true, attendance });
   } catch (error) {
+    console.log('Error updating attendance:', error);
     res.status(500).json({ success: false, error: 'Failed to update attendance ⨉' });
   }
 };
 
+
 export const deleteAttendance = (req, res) => {
+    console.log('req.body from node.js deleteAttendance:', req.body);
     Attendance.deleteMany({ date: req.body.date, teacherID: req.body.teacherID, courseID: req.body.courseID })
         .then((attendance) => {
         res.status(200).json({ attendance: attendance });

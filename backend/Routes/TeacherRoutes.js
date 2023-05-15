@@ -28,7 +28,8 @@ router.post("/generateGrade", DecodeUser, generateGrade, (req,res)=>{
 router.post("/addAttendance", DecodeUser, addAttendance, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
-router.put("/updateAttendance", DecodeUser, updateAttendance, (req,res)=>{
+
+router.put("/updateAttendance", updateAttendance, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
 router.delete("/deleteAttendance", DecodeUser, deleteAttendance, (req,res)=>{

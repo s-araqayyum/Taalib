@@ -10,6 +10,7 @@ For a teacher managing assessments, the following functions are required:
 */
 
 export const getAssessment = (req, res) => {
+    console.log('req.body from node.js getAssessment:', req.body);
     let { teacherID, courseID } = req.body;
     Assesment.find({ teacherID: teacherID, courseID: courseID })
         .then((assesment) => {
@@ -21,40 +22,53 @@ export const getAssessment = (req, res) => {
         }
         );
 }
-
 export const addAssessment = async (req, res) => {
-    const { teacherID, courseID, typeOfAssessment, totalMarks, weightage, date } = req.body;
-  
-    try {
-      const students = await Student.find();
-      for (const student of students) {
-        for (const course of student.courses) {
-          const wantedCourse = await Course.findOne({ name: course.name });
-          if (wantedCourse != null) {
-            if(wantedCourse._id == courseID){
-              const assessmentRecords = students.map((student) => ({
-                studentID: student._id,
-                teacherID,
-                courseID,
-                typeOfAssessment,
-                totalMarks,
-                obtainedMarks: 0,
-                weightage,
-                date
-              }));
-          
-              const createdAssessment = await Assesment.create(assessmentRecords);
-              res.status(201).json({ success: true, assessment: createdAssessment });
-            }
+  console.log('req.body from node.js addAssessment:', req.body);
+  const { teacherID, courseID, typeOfAssessment, totalMarks, weightage, date } = req.body;
+  let assessmentCreated = false;
+  let createdAssessment = null;
+
+  try {
+    const students = await Student.find();
+    for (const student of students) {
+      for (const course of student.courses) {
+        const wantedCourse = await Course.findOne({ name: course.name });
+        if (wantedCourse != null) {
+          if (wantedCourse._id == courseID) {
+            const assessmentRecords = students.map((student) => ({
+              studentID: student._id,
+              teacherID,
+              courseID,
+              typeOfAssessment,
+              totalMarks,
+              obtainedMarks: 0,
+              weightage,
+              date
+            }));
+
+            createdAssessment = await Assesment.create(assessmentRecords);
+            assessmentCreated = true;
+            break;
           }
         }
       }
-    } catch (error) {
-      res.status(500).json({ success: false, error: 'Failed to create assessment item ⨉' });
+      if (assessmentCreated) {
+        break;
+      }
     }
+
+    if (assessmentCreated) {
+      res.status(201).json({ success: true, assessment: createdAssessment });
+    } else {
+      res.status(404).json({ success: false, error: 'Course not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ success: false, error: 'Failed to create assessment item' });
+  }
 }
 
 export const updateAssessment = async (req, res) => {
+    console.log('req.body from node.js updateAssessment:', req.body);
     const { studentID, teacherID, courseID, typeOfAssessment, obtainedMarks, date } = req.body;
   
     try {
@@ -75,6 +89,7 @@ export const updateAssessment = async (req, res) => {
 };
 
 export const deleteAssessment = async (req, res) => {
+    console.log('req.body from node.js deleteAssessment:', req.body);
     const { teacherID, courseID, typeOfAssessment, date } = req.body;
   
     try {
@@ -90,6 +105,7 @@ export const deleteAssessment = async (req, res) => {
 }
 
 export const generateGrade = async (req, res) => {
+    console.log('req.body from node.js generateGrade:', req.body);
     const { teacherID, courseID, studentID } = req.body;
   
     try {
