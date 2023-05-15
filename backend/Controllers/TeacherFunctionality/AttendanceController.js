@@ -69,14 +69,13 @@ export const addAttendance = async (req, res) => {
 };
 
 export const updateAttendance = async (req, res) => {
-  console.log('Updating attendance record...');
-
-  const { studentID, teacherID, courseID, date } = req.body;
+  console.log('req.body from node.js update-Attendance:', req.body);
+  const { studentID, teacherID, courseID, date, isPresent } = req.body;
 
   try {
     const attendance = await Attendance.findOneAndUpdate(
       { studentID, teacherID, courseID, date },
-      { $set: { isPresent: true } },
+      { $set: { isPresent } },
       { new: true }
     );    
 

@@ -1,0 +1,1169 @@
+{
+	"info": {
+		"_postman_id": "df8febc3-7f56-44ff-a954-ab11f530e861",
+		"name": "Taalib",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27410682"
+	},
+	"item": [
+		{
+			"name": "Manage Assessment",
+			"item": [
+				{
+					"name": "Add Attendance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjE0NWYyMDFmNjFmZGM1NDRiM2UyMCIsImlhdCI6MTY4NDE0MDA5MiwiZXhwIjoxNjg0MjI2NDkyfQ.vrxau-Cq9N2nx2Y-G_913C4TT-ucz5I9OL4QsRWjfd8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"teacherID\": \"teacher123\",\r\n  \"courseID\": \"646120e201f61fdc544b3e03\",\r\n  \"typeOfAssessment\": \"Final Exam\",\r\n  \"totalMarks\": 100,\r\n  \"weightage\": 60,\r\n  \"date\": \"2023-05-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/teacher/addAssessment",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"teacher",
+								"addAssessment"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Attendance Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"teacherID\": \"teacher123\",\r\n  \"courseID\": \"646120e201f61fdc544b3e03\",\r\n  \"typeOfAssessment\": \"Final Exam\",\r\n  \"totalMarks\": 100,\r\n  \"weightage\": 60,\r\n  \"date\": \"2023-05-15\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3001/teacher/addAssessment",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"teacher",
+										"addAssessment"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1597"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"63d-LZ9KAX/GTbnV6PHljpb+OCi6lT4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 May 2023 08:42:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"assessment\": [\n        {\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc2a6eb7742431141d00\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-15T00:00:00.000Z\",\n            \"_id\": \"6461f08602576917d330b950\",\n            \"__v\": 0\n        },\n        {\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc5d6eb7742431141d02\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-15T00:00:00.000Z\",\n            \"_id\": \"6461f08602576917d330b951\",\n            \"__v\": 0\n        },\n        {\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc7f6eb7742431141d04\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-15T00:00:00.000Z\",\n            \"_id\": \"6461f08602576917d330b952\",\n            \"__v\": 0\n        },\n        {\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc956eb7742431141d06\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-15T00:00:00.000Z\",\n            \"_id\": \"6461f08602576917d330b953\",\n            \"__v\": 0\n        },\n        {\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebf6dffbd564193129a97\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-15T00:00:00.000Z\",\n            \"_id\": \"6461f08602576917d330b954\",\n            \"__v\": 0\n        },\n        {\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"646191278bd326832488f194\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-15T00:00:00.000Z\",\n            \"_id\": \"6461f08602576917d330b955\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "View Assessment",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjE0NWYyMDFmNjFmZGM1NDRiM2UyMCIsImlhdCI6MTY4NDE0MDA5MiwiZXhwIjoxNjg0MjI2NDkyfQ.vrxau-Cq9N2nx2Y-G_913C4TT-ucz5I9OL4QsRWjfd8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"teacherID\": \"teacher123\",\r\n  \"courseID\": \"646120e201f61fdc544b3e03\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/teacher/getAssessment",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"teacher",
+								"getAssessment"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "View Assessment Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"teacherID\": \"teacher123\",\r\n  \"courseID\": \"646120e201f61fdc544b3e03\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3001/teacher/getAssessment",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"teacher",
+										"getAssessment"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "6279"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1887-XaVCyeEcmHu8o/vBcZnh2Ave6eI\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 May 2023 08:44:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"assesment\": [\n        {\n            \"_id\": \"6461e3a1572915bc041f0101\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc2a6eb7742431141d00\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-16T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461e3a1572915bc041f0102\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc5d6eb7742431141d02\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-16T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461e3a1572915bc041f0103\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc7f6eb7742431141d04\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-16T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461e3a1572915bc041f0104\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc956eb7742431141d06\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-16T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461e3a1572915bc041f0105\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebf6dffbd564193129a97\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-16T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461e3a1572915bc041f0106\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"646191278bd326832488f194\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-16T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461e41c572915bc041f011f\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc2a6eb7742431141d00\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-16T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461e41c572915bc041f0121\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc7f6eb7742431141d04\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-16T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461e41c572915bc041f0120\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc5d6eb7742431141d02\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-16T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461e41c572915bc041f0123\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebf6dffbd564193129a97\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-16T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461e41c572915bc041f0122\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc956eb7742431141d06\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-16T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461e41c572915bc041f0124\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"646191278bd326832488f194\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-16T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461ee7902576917d330b92c\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc2a6eb7742431141d00\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-15T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461ee7902576917d330b92d\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc5d6eb7742431141d02\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-15T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461ee7902576917d330b92e\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc7f6eb7742431141d04\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-15T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461ee7902576917d330b931\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"646191278bd326832488f194\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-15T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461ee7902576917d330b930\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebf6dffbd564193129a97\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-15T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461ee7902576917d330b92f\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc956eb7742431141d06\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-15T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461f08602576917d330b951\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc5d6eb7742431141d02\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-15T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461f08602576917d330b950\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc2a6eb7742431141d00\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-15T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461f08602576917d330b952\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc7f6eb7742431141d04\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-15T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461f08602576917d330b953\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebc956eb7742431141d06\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-15T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461f08602576917d330b954\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"645ebf6dffbd564193129a97\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-15T00:00:00.000Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6461f08602576917d330b955\",\n            \"typeOfAssessment\": \"Final Exam\",\n            \"totalMarks\": 100,\n            \"obtainedMarks\": 0,\n            \"weightage\": 60,\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"studentID\": \"646191278bd326832488f194\",\n            \"teacherID\": \"teacher123\",\n            \"date\": \"2023-05-15T00:00:00.000Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Assessment Marks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjE0NWYyMDFmNjFmZGM1NDRiM2UyMCIsImlhdCI6MTY4NDE0MDA5MiwiZXhwIjoxNjg0MjI2NDkyfQ.vrxau-Cq9N2nx2Y-G_913C4TT-ucz5I9OL4QsRWjfd8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"typeOfAssessment\": \"Final Exam\",\r\n  \"obtainedMarks\": 55,\r\n  \"courseID\": \"646120e201f61fdc544b3e03\",\r\n  \"studentID\": \"645ebc2a6eb7742431141d00\",\r\n  \"teacherID\": \"teacher123\",\r\n  \"date\": \"2023-05-16T00:00:00.000+00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/teacher/updateAssessment",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"teacher",
+								"updateAssessment"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Assessment Marks",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"typeOfAssessment\": \"Final Exam\",\r\n  \"obtainedMarks\": 55,\r\n  \"courseID\": \"646120e201f61fdc544b3e03\",\r\n  \"studentID\": \"645ebc2a6eb7742431141d00\",\r\n  \"teacherID\": \"teacher123\",\r\n  \"date\": \"2023-05-16T00:00:00.000+00:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3001/teacher/updateAssessment",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"teacher",
+										"updateAssessment"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "291"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"123-SllTGtYZ5q7KsXbMaqi+n9DfCxs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 May 2023 08:48:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"assessment\": {\n        \"_id\": \"6461e3a1572915bc041f0101\",\n        \"typeOfAssessment\": \"Final Exam\",\n        \"totalMarks\": 100,\n        \"obtainedMarks\": 55,\n        \"weightage\": 60,\n        \"courseID\": \"646120e201f61fdc544b3e03\",\n        \"studentID\": \"645ebc2a6eb7742431141d00\",\n        \"teacherID\": \"teacher123\",\n        \"date\": \"2023-05-16T00:00:00.000Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Assessment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjE0NWYyMDFmNjFmZGM1NDRiM2UyMCIsImlhdCI6MTY4NDE0MDA5MiwiZXhwIjoxNjg0MjI2NDkyfQ.vrxau-Cq9N2nx2Y-G_913C4TT-ucz5I9OL4QsRWjfd8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"teacherID\": \"teacher123\",\r\n  \"courseID\": \"646120e201f61fdc544b3e03\",\r\n  \"typeOfAssessment\": \"Final Exam\",\r\n  \"date\": \"2023-05-15\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:3001/teacher/deleteAssessment",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"teacher",
+								"deleteAssessment"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Assessment",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"teacherID\": \"teacher123\",\r\n  \"courseID\": \"646120e201f61fdc544b3e03\",\r\n  \"typeOfAssessment\": \"Final Exam\",\r\n  \"date\": \"2023-05-15\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3001/teacher/deleteAssessment",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"teacher",
+										"deleteAssessment"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45-foNZMAoWiOHaLUR4qagRvSM5uLs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 May 2023 08:22:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"assessment\": {\n        \"acknowledged\": true,\n        \"deletedCount\": 53\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Manage Attendance",
+			"item": [
+				{
+					"name": "Get Attendances",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjE0NWYyMDFmNjFmZGM1NDRiM2UyMCIsImlhdCI6MTY4NDE0MDA5MiwiZXhwIjoxNjg0MjI2NDkyfQ.vrxau-Cq9N2nx2Y-G_913C4TT-ucz5I9OL4QsRWjfd8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"studentID\": \"645ebc5d6eb7742431141d02\",\r\n      \"teacherID\": \"teacher123\",\r\n      \"courseID\": \"646120e201f61fdc544b3e03\",\r\n      \"date\": \"2023-05-14\",\r\n      \"isPresent\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/teacher/getAttendance",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"teacher",
+								"getAttendance"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Attendances Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n      \"studentID\": \"645ebc5d6eb7742431141d02\",\r\n      \"teacherID\": \"teacher123\",\r\n      \"courseID\": \"646120e201f61fdc544b3e03\",\r\n      \"date\": \"2023-05-14\",\r\n      \"isPresent\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3001/teacher/getAttendance",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"teacher",
+										"getAttendance"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2626"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a42-URfsPh0/oi1DF0byQ+Hxvk5Xffw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 May 2023 08:54:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"attendance\": [\n        {\n            \"_id\": \"64612779e82856a6961bc9bc\",\n            \"studentID\": \"645ebc2a6eb7742431141d00\",\n            \"teacherID\": \"teacher123\",\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"date\": \"2023-05-14\",\n            \"isPresent\": false,\n            \"createdAt\": \"2023-05-14T18:24:57.586Z\",\n            \"updatedAt\": \"2023-05-14T18:24:57.586Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"64612779e82856a6961bc9bd\",\n            \"studentID\": \"645ebc5d6eb7742431141d02\",\n            \"teacherID\": \"teacher123\",\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"date\": \"2023-05-14\",\n            \"isPresent\": false,\n            \"createdAt\": \"2023-05-14T18:24:57.586Z\",\n            \"updatedAt\": \"2023-05-14T18:24:57.586Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"64612779e82856a6961bc9be\",\n            \"studentID\": \"645ebc7f6eb7742431141d04\",\n            \"teacherID\": \"teacher123\",\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"date\": \"2023-05-14\",\n            \"isPresent\": false,\n            \"createdAt\": \"2023-05-14T18:24:57.586Z\",\n            \"updatedAt\": \"2023-05-14T18:24:57.586Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"64612779e82856a6961bc9bf\",\n            \"studentID\": \"645ebc956eb7742431141d06\",\n            \"teacherID\": \"teacher123\",\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"date\": \"2023-05-14\",\n            \"isPresent\": false,\n            \"createdAt\": \"2023-05-14T18:24:57.586Z\",\n            \"updatedAt\": \"2023-05-14T18:24:57.586Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"64612779e82856a6961bc9c0\",\n            \"studentID\": \"645ebf6dffbd564193129a97\",\n            \"teacherID\": \"teacher123\",\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"date\": \"2023-05-14\",\n            \"isPresent\": false,\n            \"createdAt\": \"2023-05-14T18:24:57.586Z\",\n            \"updatedAt\": \"2023-05-14T18:24:57.586Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"646128dc793fb4a05da6a1dc\",\n            \"studentID\": \"645ebc5d6eb7742431141d02\",\n            \"teacherID\": \"teacher123\",\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"date\": \"2023-05-14\",\n            \"isPresent\": false,\n            \"createdAt\": \"2023-05-14T18:30:52.912Z\",\n            \"updatedAt\": \"2023-05-14T18:30:52.912Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"646128dc793fb4a05da6a1db\",\n            \"studentID\": \"645ebc2a6eb7742431141d00\",\n            \"teacherID\": \"teacher123\",\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"date\": \"2023-05-14\",\n            \"isPresent\": false,\n            \"createdAt\": \"2023-05-14T18:30:52.912Z\",\n            \"updatedAt\": \"2023-05-14T18:30:52.912Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"646128dc793fb4a05da6a1dd\",\n            \"studentID\": \"645ebc7f6eb7742431141d04\",\n            \"teacherID\": \"teacher123\",\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"date\": \"2023-05-14\",\n            \"isPresent\": false,\n            \"createdAt\": \"2023-05-14T18:30:52.913Z\",\n            \"updatedAt\": \"2023-05-14T18:30:52.913Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"646128dc793fb4a05da6a1df\",\n            \"studentID\": \"645ebf6dffbd564193129a97\",\n            \"teacherID\": \"teacher123\",\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"date\": \"2023-05-14\",\n            \"isPresent\": false,\n            \"createdAt\": \"2023-05-14T18:30:52.913Z\",\n            \"updatedAt\": \"2023-05-14T18:30:52.913Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"646128dc793fb4a05da6a1de\",\n            \"studentID\": \"645ebc956eb7742431141d06\",\n            \"teacherID\": \"teacher123\",\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"date\": \"2023-05-14\",\n            \"isPresent\": false,\n            \"createdAt\": \"2023-05-14T18:30:52.913Z\",\n            \"updatedAt\": \"2023-05-14T18:30:52.913Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Add Attendance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjE0NWYyMDFmNjFmZGM1NDRiM2UyMCIsImlhdCI6MTY4NDE0MDA5MiwiZXhwIjoxNjg0MjI2NDkyfQ.vrxau-Cq9N2nx2Y-G_913C4TT-ucz5I9OL4QsRWjfd8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"teacherID\": \"teacher123\",\r\n  \"courseID\": \"646120e201f61fdc544b3e03\",\r\n  \"date\": \"2023-05-14\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/teacher/addAttendance",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"teacher",
+								"addAttendance"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Attendance",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"teacherID\": \"teacher123\",\r\n  \"courseID\": \"646120e201f61fdc544b3e03\",\r\n  \"date\": \"2023-05-14\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3001/teacher/addAttendance",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"teacher",
+										"addAttendance"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1597"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"63d-5umx/nRwJmAotFAo3FyVJh2u9uY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 May 2023 08:58:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"attendance\": [\n        {\n            \"studentID\": \"645ebc2a6eb7742431141d00\",\n            \"teacherID\": \"teacher123\",\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"date\": \"2023-05-14\",\n            \"isPresent\": false,\n            \"_id\": \"6461f44402576917d330b999\",\n            \"createdAt\": \"2023-05-15T08:58:44.976Z\",\n            \"updatedAt\": \"2023-05-15T08:58:44.976Z\",\n            \"__v\": 0\n        },\n        {\n            \"studentID\": \"645ebc5d6eb7742431141d02\",\n            \"teacherID\": \"teacher123\",\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"date\": \"2023-05-14\",\n            \"isPresent\": false,\n            \"_id\": \"6461f44402576917d330b99a\",\n            \"createdAt\": \"2023-05-15T08:58:44.977Z\",\n            \"updatedAt\": \"2023-05-15T08:58:44.977Z\",\n            \"__v\": 0\n        },\n        {\n            \"studentID\": \"645ebc7f6eb7742431141d04\",\n            \"teacherID\": \"teacher123\",\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"date\": \"2023-05-14\",\n            \"isPresent\": false,\n            \"_id\": \"6461f44402576917d330b99b\",\n            \"createdAt\": \"2023-05-15T08:58:44.977Z\",\n            \"updatedAt\": \"2023-05-15T08:58:44.977Z\",\n            \"__v\": 0\n        },\n        {\n            \"studentID\": \"645ebc956eb7742431141d06\",\n            \"teacherID\": \"teacher123\",\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"date\": \"2023-05-14\",\n            \"isPresent\": false,\n            \"_id\": \"6461f44402576917d330b99c\",\n            \"createdAt\": \"2023-05-15T08:58:44.977Z\",\n            \"updatedAt\": \"2023-05-15T08:58:44.977Z\",\n            \"__v\": 0\n        },\n        {\n            \"studentID\": \"645ebf6dffbd564193129a97\",\n            \"teacherID\": \"teacher123\",\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"date\": \"2023-05-14\",\n            \"isPresent\": false,\n            \"_id\": \"6461f44402576917d330b99d\",\n            \"createdAt\": \"2023-05-15T08:58:44.977Z\",\n            \"updatedAt\": \"2023-05-15T08:58:44.977Z\",\n            \"__v\": 0\n        },\n        {\n            \"studentID\": \"646191278bd326832488f194\",\n            \"teacherID\": \"teacher123\",\n            \"courseID\": \"646120e201f61fdc544b3e03\",\n            \"date\": \"2023-05-14\",\n            \"isPresent\": false,\n            \"_id\": \"6461f44402576917d330b99e\",\n            \"createdAt\": \"2023-05-15T08:58:44.977Z\",\n            \"updatedAt\": \"2023-05-15T08:58:44.977Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Attendance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjE0NWYyMDFmNjFmZGM1NDRiM2UyMCIsImlhdCI6MTY4NDE0MDA5MiwiZXhwIjoxNjg0MjI2NDkyfQ.vrxau-Cq9N2nx2Y-G_913C4TT-ucz5I9OL4QsRWjfd8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n      \"studentID\": \"645ebc2a6eb7742431141d00\",\r\n      \"teacherID\": \"teacher123\",\r\n      \"courseID\": \"645ec2436eb7742431141d0b\",\r\n      \"date\": \"2023-05-19\",\r\n      \"isPresent\": false\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/teacher/updateAttendance",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"teacher",
+								"updateAttendance"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Attendance",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\r\n      \"studentID\": \"645ebc2a6eb7742431141d00\",\r\n      \"teacherID\": \"teacher123\",\r\n      \"courseID\": \"645ec2436eb7742431141d0b\",\r\n      \"date\": \"2023-05-19\",\r\n      \"isPresent\": false\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3001/teacher/updateAttendance",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"teacher",
+										"updateAttendance"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "290"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"122-gNzXkGFHPRK2rG7Z/6cWZZs6OBg\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 May 2023 10:04:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"attendance\": {\n        \"_id\": \"646202a740b8f1ee3cf6ec97\",\n        \"studentID\": \"645ebc2a6eb7742431141d00\",\n        \"teacherID\": \"teacher123\",\n        \"courseID\": \"645ec2436eb7742431141d0b\",\n        \"date\": \"2023-05-19\",\n        \"isPresent\": false,\n        \"createdAt\": \"2023-05-15T10:00:07.367Z\",\n        \"updatedAt\": \"2023-05-15T10:04:26.812Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Attendance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjE0NWYyMDFmNjFmZGM1NDRiM2UyMCIsImlhdCI6MTY4NDE0MDA5MiwiZXhwIjoxNjg0MjI2NDkyfQ.vrxau-Cq9N2nx2Y-G_913C4TT-ucz5I9OL4QsRWjfd8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n      \"teacherID\": \"teacher123\",\r\n      \"courseID\": \"645ec2436eb7742431141d0b\",\r\n      \"date\": \"2023-05-19\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/teacher/deleteAttendance",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"teacher",
+								"deleteAttendance"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Attendance",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\r\n      \"teacherID\": \"teacher123\",\r\n      \"courseID\": \"645ec2436eb7742431141d0b\",\r\n      \"date\": \"2023-05-19\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3001/teacher/deleteAttendance",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"teacher",
+										"deleteAttendance"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35-A/j79LisR2wlD8vk19mzvhSK3w0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 May 2023 10:05:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"attendance\": {\n        \"acknowledged\": true,\n        \"deletedCount\": 6\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"employeeId\":\"987654321\",\r\n  \"password\":\"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/teacher/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"teacher",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login Example",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"employeeId\":\"987654321\",\r\n  \"password\":\"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/teacher/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"teacher",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "183"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"b7-M4RN2eAO0S4aTONm/MePjbtYrLQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 15 May 2023 08:41:32 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjE0NWYyMDFmNjFmZGM1NDRiM2UyMCIsImlhdCI6MTY4NDE0MDA5MiwiZXhwIjoxNjg0MjI2NDkyfQ.vrxau-Cq9N2nx2Y-G_913C4TT-ucz5I9OL4QsRWjfd8\"\n}"
+				}
+			]
+		},
+		{
+			"name": "View Anonymized Feedback",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjE0NWYyMDFmNjFmZGM1NDRiM2UyMCIsImlhdCI6MTY4NDE0MDA5MiwiZXhwIjoxNjg0MjI2NDkyfQ.vrxau-Cq9N2nx2Y-G_913C4TT-ucz5I9OL4QsRWjfd8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"teacherID\": \"987654321\",\r\n  \"courseID\": \"646120e201f61fdc544b3e03\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/teacher/ViewAnonymizedFeedback",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"teacher",
+						"ViewAnonymizedFeedback"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "View Anonymized Feedback",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"teacherID\": \"987654321\",\r\n  \"courseID\": \"646120e201f61fdc544b3e03\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/teacher/ViewAnonymizedFeedback",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"teacher",
+								"ViewAnonymizedFeedback"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1955"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7a3-lmxfUGVPIn1O1+6tH5ViQjJRuuA\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 15 May 2023 10:09:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"feedback\": [\n        {\n            \"_id\": \"6461354e01f61fdc544b3e16\",\n            \"feedback\": \"The course material was well-organized and comprehensive. The instructor was knowledgeable and provided clear explanations. The assignments and assessments helped solidify my understanding of the concepts. However, I would have liked more interactive discussions or group activities to enhance collaboration among students. Overall, I had a positive learning experience.\",\n            \"studentID\": \"645ebc2a6eb7742431141d00\",\n            \"teacherID\": \"987654321\",\n            \"courseID\": \"646120e201f61fdc544b3e03\"\n        },\n        {\n            \"_id\": \"6461356401f61fdc544b3e18\",\n            \"feedback\": \"I found the course content to be well-structured and relevant. The instructor was engaging and provided timely feedback on assignments. The practical exercises and real-world examples helped me apply the concepts effectively. I would recommend this course to others interested in the subject.\",\n            \"studentID\": \"645ebc5d6eb7742431141d02\",\n            \"teacherID\": \"987654321\",\n            \"courseID\": \"646120e201f61fdc544b3e03\"\n        },\n        {\n            \"_id\": \"6461357301f61fdc544b3e1a\",\n            \"feedback\": \"I want to express my gratitude for this course. The instructor's expertise and passion for the subject were evident throughout the lectures. The course materials were well-curated and provided valuable insights. The assignments were challenging but helped me deepen my understanding. Overall, it was a rewarding learning experience.\",\n            \"studentID\": \"645ebc956eb7742431141d06\",\n            \"teacherID\": \"987654321\",\n            \"courseID\": \"646120e201f61fdc544b3e03\"\n        },\n        {\n            \"_id\": \"6461357601f61fdc544b3e1b\",\n            \"feedback\": \"I want to express my gratitude for this course. The instructor's expertise and passion for the subject were evident throughout the lectures. The course materials were well-curated and provided valuable insights. The assignments were challenging but helped me deepen my understanding. Overall, it was a rewarding learning experience.\",\n            \"studentID\": \"645ebc956eb7742431141d06\",\n            \"teacherID\": \"987654321\",\n            \"courseID\": \"646120e201f61fdc544b3e03\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Generate Grade",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjE0NWYyMDFmNjFmZGM1NDRiM2UyMCIsImlhdCI6MTY4NDE0MDA5MiwiZXhwIjoxNjg0MjI2NDkyfQ.vrxau-Cq9N2nx2Y-G_913C4TT-ucz5I9OL4QsRWjfd8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"studentID\":\"645ebc5d6eb7742431141d02\",\r\n  \"teacherID\": \"teacher123\",\r\n  \"courseID\": \"646120e201f61fdc544b3e03\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/teacher/generateGrade",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"teacher",
+						"generateGrade"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Generate Grade",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"studentID\":\"645ebc5d6eb7742431141d02\",\r\n  \"teacherID\": \"teacher123\",\r\n  \"courseID\": \"646120e201f61fdc544b3e03\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/teacher/generateGrade",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"teacher",
+								"generateGrade"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "34"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"22-898Z8bPd63BjmvfzTyXFZqw/9TE\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 15 May 2023 10:09:26 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"letterGrade\": \"F\"\n}"
+				}
+			]
+		}
+	]
+}
