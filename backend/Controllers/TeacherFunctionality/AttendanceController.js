@@ -95,8 +95,8 @@ export const updateAttendance = async (req, res) => {
 
 
 export const deleteAttendance = (req, res) => {
-    console.log('req.body from node.js deleteAttendance:', req.body);
-    Attendance.deleteMany({ date: req.body.date, teacherID: req.body.teacherID, courseID: req.body.courseID })
+    console.log('req.body from node.js deleteAttendance:', req.query);
+    Attendance.deleteMany({ date: req.query.date, teacherID: req.query.teacherID, courseID: req.query.courseID })
         .then((attendance) => {
         res.status(200).json({ attendance: attendance });
         }
