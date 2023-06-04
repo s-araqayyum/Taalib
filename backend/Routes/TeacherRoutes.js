@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.post("/login", login);
 
+//All Assessment Routes
 router.post("/addAssessment", DecodeUser, addAssessment, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
@@ -17,28 +18,32 @@ router.put("/updateAssessment", DecodeUser, updateAssessment, (req,res)=>{
 router.delete("/deleteAssessment", DecodeUser, deleteAssessment, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
-router.get("/getAssessment", DecodeUser, getAssessment, (req,res)=>{
+router.post("/getAssessment", getAssessment, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
 
+//Grade Generation Route
 router.post("/generateGrade", DecodeUser, generateGrade, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
 
-router.post("/addAttendance", DecodeUser, addAttendance, (req,res)=>{
+
+//All Attendance Routes
+router.post("/addAttendance", addAttendance, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
 
 router.put("/updateAttendance", updateAttendance, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
-router.delete("/deleteAttendance", DecodeUser, deleteAttendance, (req,res)=>{
+router.delete("/deleteAttendance", deleteAttendance, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
-router.get("/getAttendance", DecodeUser, getAttendance, (req,res)=>{
+router.post("/getAttendance", getAttendance, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
 
+//Feedback Route
 router.get("/ViewAnonymizedFeedback", DecodeUser, ViewAnonymizedFeedback, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })

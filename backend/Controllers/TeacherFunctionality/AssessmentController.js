@@ -11,8 +11,8 @@ For a teacher managing assessments, the following functions are required:
 
 export const getAssessment = (req, res) => {
     console.log('req.body from node.js getAssessment:', req.body);
-    let { teacherID, courseID } = req.body;
-    Assesment.find({ teacherID: teacherID, courseID: courseID })
+    let { date, teacherID, courseID } = req.body;
+    Assesment.find({ date:date, teacherID: teacherID, courseID: courseID })
         .then((assesment) => {
         res.status(200).json({ assesment: assesment });
         }

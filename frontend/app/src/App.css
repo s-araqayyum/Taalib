@@ -1,0 +1,153 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.attendance-container {
+  background-color: #E5F4F4;
+}
+
+.assessment-container {
+  background-color: #BD9E8A;
+}
+
+.assessment-container .background-image {
+  width: 40%;
+  height: 10%;
+  object-fit: cover;
+}
+
+.cute-button {
+  background-color: #c0e2e2;
+  color: white;
+  border: none;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.cute-button:hover {
+  background-color: #80C2D0;
+  color: white;
+}
+
+.cute-button:focus {
+  outline: none;
+  background-color: #a8d6d6;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333333;
+}
+
+input[type="date"],
+input[type="text"] {
+  width: 19%;
+  padding: 8px;
+  border: 1px solid #E5F4F4;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+
+input[type="date"]:focus,
+input[type="text"]:focus {
+  outline: none;
+  border-color: #a8d6d6;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+
+table {
+  width: 50%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+/*Assessment*/
+
+.assessment-cute-button {
+  background-color: #634f42;
+  color: white;
+  border: none;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.cute-button:hover {
+  background-color: #80C2D0;
+  color: white;
+}
+
+.cute-button:focus {
+  outline: none;
+  background-color: #a8d6d6;
+}
