@@ -47,7 +47,7 @@ const Attendance = () => {
       .post('http://localhost:3001/teacher/addAttendance', { teacherID, courseID, date })
       .then((response) => {
         console.log(response.data);
-        getAttendance(); // Refresh attendance after adding
+        getAttendance(); 
       })
       .catch((error) => {
         console.log(error);
