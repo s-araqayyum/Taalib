@@ -1,5 +1,6 @@
 import Assesment from "../../Models/AssessmentModel.js";
 import { Student, Course } from "../../Models/StudentModel.js";
+import Teacher from "../../Models/TeacherModel.js";
 
 /*
 For a teacher managing assessments, the following functions are required:
@@ -11,7 +12,8 @@ For a teacher managing assessments, the following functions are required:
 
 export const getAssessment = (req, res) => {
     console.log('req.body from node.js getAssessment:', req.body);
-    let { date, teacherID, courseID } = req.body;
+    let { date, courseID } = req.body;
+    let teacherID = req.decoded.id;
     Assesment.find({ date:date, teacherID: teacherID, courseID: courseID })
         .then((assesment) => {
         res.status(200).json({ assesment: assesment });
@@ -24,40 +26,30 @@ export const getAssessment = (req, res) => {
 }
 export const addAssessment = async (req, res) => {
   console.log('req.body from node.js addAssessment:', req.body);
-  const { teacherID, courseID, typeOfAssessment, totalMarks, weightage, date } = req.body;
-  let assessmentCreated = false;
+  const { courseID, typeOfAssessment, totalMarks, weightage, date } = req.body;
+  console.log(req.decoded)
+  let teacherID = req.decoded.id;
   let createdAssessment = null;
 
+  const teacher = await Teacher.findOne({employeeId: teacherID});
+  console.log(teacher._id)
   try {
-    const students = await Student.find();
-    for (const student of students) {
-      for (const course of student.courses) {
-        const wantedCourse = await Course.findOne({ name: course.name });
-        if (wantedCourse != null) {
-          if (wantedCourse._id == courseID) {
-            const assessmentRecords = students.map((student) => ({
-              studentID: student._id,
-              teacherID,
-              courseID,
-              typeOfAssessment,
-              totalMarks,
-              obtainedMarks: 0,
-              weightage,
-              date
-            }));
+    const students = await Student.find({ 'courses._id': courseID, "courses.instructor": teacher._id });
+    console.log(students)
+    const assessmentRecords = students.map((student) => ({
+      studentID: student._id,
+      teacherID,
+      courseID,
+      typeOfAssessment,
+      totalMarks,
+      obtainedMarks: 0,
+      weightage,
+      date
+    }));
 
-            createdAssessment = await Assesment.create(assessmentRecords);
-            assessmentCreated = true;
-            break;
-          }
-        }
-      }
-      if (assessmentCreated) {
-        break;
-      }
-    }
+    createdAssessment = await Assesment.create(assessmentRecords);
 
-    if (assessmentCreated) {
+    if (createdAssessment.length > 0) {
       res.status(201).json({ success: true, assessment: createdAssessment });
     } else {
       res.status(404).json({ success: false, error: 'Course not found' });
@@ -69,8 +61,9 @@ export const addAssessment = async (req, res) => {
 
 export const updateAssessment = async (req, res) => {
     console.log('req.body from node.js updateAssessment:', req.body);
-    const { studentID, teacherID, courseID, typeOfAssessment, obtainedMarks, date } = req.body;
-  
+    const { studentID, courseID, typeOfAssessment, obtainedMarks, date } = req.body;
+    let teacherID = req.decoded.id;
+
     try {
       const assessment = await Assesment.findOneAndUpdate(
         { studentID, teacherID, courseID, typeOfAssessment, date },
@@ -90,7 +83,8 @@ export const updateAssessment = async (req, res) => {
 
 export const deleteAssessment = async (req, res) => {
     console.log('req.body from node.js deleteAssessment:', req.query);
-    const { teacherID, courseID, typeOfAssessment, date } = req.query;
+    const { courseID, typeOfAssessment, date } = req.query;
+    let teacherID = req.decoded.id;
   
     try {
       const assessment = await Assesment.deleteMany({ teacherID, courseID, typeOfAssessment, date });
@@ -105,24 +99,32 @@ export const deleteAssessment = async (req, res) => {
 }
 
 export const generateGrade = async (req, res) => {
-    console.log('req.body from node.js generateGrade:', req.body);
-    const { teacherID, courseID, studentID } = req.body;
-  
-    try {
-      const assessment = await Assesment.find({ teacherID, courseID, studentID });
-      
+  console.log('req.body from node.js generateGrade:', req.body);
+  const { courseID } = req.body;
+  let teacherID = req.decoded.id;
+  console.log(teacherID)
+
+  try {
+    const students = await Student.find({ 'courses._id': courseID });
+    console.log(students)
+
+    if (!students || students.length === 0) {
+      return res.status(404).json({ success: false, error: 'No students found in the course' });
+    }
+
+    const studentAndGrade = await Promise.all(students.map(async (student) => {
+      const assessment = await Assesment.findOne({ teacherID, courseID, studentID: student._id }).exec();
+
       if (!assessment) {
-        res.status(404).json({ success: false, error: 'Assessment record not found ⨉' });
+        return { studentID: student._id, letterGrade: 'N/A' };
       }
 
       let totalGrade = 0;
       let totalWeightage = 0;
 
-      assessment.forEach((assessment) => {
-        const { obtainedMarks, totalMarks, weightage } = assessment;
-        totalGrade += (obtainedMarks / totalMarks) * weightage;
-        totalWeightage += weightage;
-      });
+      const { obtainedMarks, totalMarks, weightage } = assessment;
+      totalGrade += (obtainedMarks / totalMarks) * weightage;
+      totalWeightage += weightage;
 
       const finalGrade = (totalGrade / totalWeightage) * 100;
 
@@ -139,8 +141,11 @@ export const generateGrade = async (req, res) => {
         letterGrade = 'F';
       }
 
-      res.status(200).json({ success: true, letterGrade });
-    } catch (error) {
-      res.status(500).json({ success: false, error: 'Failed to generate grade ⨉' });
-    }
-}
+      return { studentID: student._id, letterGrade };
+    }));
+
+    res.status(200).json({ success: true, studentAndGrade });
+  } catch (error) {
+    res.status(500).json({ success: false, error: 'Failed to generate grades' });
+  }
+};

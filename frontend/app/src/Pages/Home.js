@@ -1,10 +1,6 @@
 import React from 'react';
 import taalib from './logo.png'
-import { Link, BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-
-import Attendance from './Attendance.js';
-import Assessment from './Assessment.js';
-import Feedback from './Feedback.js';
+import { useNavigate, Routes, Route } from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -13,8 +9,19 @@ const Home = () => {
     navigate(path);
   };
 
+  const handleLogOut = () => {
+    navigate('/');
+    localStorage.removeItem('token');
+  };
+
+  if (!localStorage.getItem('token')) {
+    navigate('/unauthorized');
+  }
+
   return (
     <div className="home">
+      <button className="logout-button" onClick={handleLogOut}><img style={{height:'20px'}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/OOjs_UI_icon_logOut-ltr-invert.svg/1024px-OOjs_UI_icon_logOut-ltr-invert.svg.png"></img></button>
+
       <img style={{ filter: 'invert(1)' }} src={taalib} alt="Taalib" />
       <div className="card" onClick={() => handleCardClick('/attendance')}>
         <img src="https://i.pinimg.com/originals/fb/12/e2/fb12e2015775ee45df3345cbf4562a01.gif" alt="Image 1" />
@@ -26,8 +33,8 @@ const Home = () => {
       <div className="card" onClick={() => handleCardClick('/assessment')}>
         <img src="https://i.pinimg.com/originals/48/76/03/4876030bfd0f131e57fc00f9ff83a0fc.gif" alt="Image 2" />
         <div className="card-content">
-          <h3>Assesment</h3>
-          <p>Manage Assesments for your courses</p>
+          <h3>Assessment</h3>
+          <p>Manage Assessments for your courses</p>
         </div>
       </div>
       <div className="card" onClick={() => handleCardClick('/feedback')}>
@@ -41,17 +48,4 @@ const Home = () => {
   );
 };
 
-const App = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/attendance" element={<Attendance />} />
-        <Route path="/assessment" element={<Assessment />} />
-        <Route path="/feedback" element={<Feedback />} />
-      </Routes>
-    </Router>
-  );
-};
-
-export default App;
+export default Home;

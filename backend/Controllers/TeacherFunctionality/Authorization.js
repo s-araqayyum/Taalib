@@ -12,10 +12,11 @@ export const login = (req,res, next) => {
         else{
             if(password == foundUser.password){
                 let token = jwt.sign({
-                    id:foundUser._id,
+                    id:foundUser.employeeId
                 }, process.env.SECRET_KEY, {
                     expiresIn:'24h'
                 })
+                console.log("teacher found")
                 res.status(200).send({ "token": token });
             }
             else{
@@ -36,6 +37,7 @@ export const DecodeUser = (req, res, next) => {
       }
   
       const token = fromHeader.split(' ')[1];
+      console.log('token:', token);
   
       if (!token) {
         return res.status(403).json({ message: 'Token not provided' });
