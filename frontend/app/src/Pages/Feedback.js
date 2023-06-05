@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import taalib from './logo.png'
 
 const Feedback = () => {
 
@@ -28,8 +29,7 @@ const Feedback = () => {
 
     return (
         <div className="feedback">
-            <img src="https://cdn.vox-cdn.com/thumbor/Qvi7h1OHaWvyTzDInorfLQu86fs=/0x0:3000x2000/1200x675/filters:focal(1260x760:1740x1240):no_upscale()/cdn.vox-cdn.com/uploads/chorus_image/image/62663758/reviews.0.gif"></img>
-
+            <img style={{ filter: 'invert(1)', height: '200px', width: '400px' }} src={taalib} alt="Taalib" />
             <div className="form-group">
                 <label htmlFor="teacherID">Teacher ID:</label>
                 <input

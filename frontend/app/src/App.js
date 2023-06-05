@@ -1,12 +1,10 @@
 import './App.css';
-import Attendance from './Pages/Attendance.js';
-import Assessment from './Pages/Assessment.js';
-import Feedback from './Pages/Feedback.js';
+import Home from './Pages/Home.js';
 
 function App() {
   return (
     <div className="App">
-      <Assessment />
+      <Home />
     </div>
   );
 }
