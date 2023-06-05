@@ -9,13 +9,13 @@ const router = express.Router();
 router.post("/login", login);
 
 //All Assessment Routes
-router.post("/addAssessment", DecodeUser, addAssessment, (req,res)=>{
+router.post("/addAssessment", addAssessment, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
-router.put("/updateAssessment", DecodeUser, updateAssessment, (req,res)=>{
+router.put("/updateAssessment", updateAssessment, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
-router.delete("/deleteAssessment", DecodeUser, deleteAssessment, (req,res)=>{
+router.delete("/deleteAssessment", deleteAssessment, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
 router.post("/getAssessment", getAssessment, (req,res)=>{
@@ -44,7 +44,7 @@ router.post("/getAttendance", getAttendance, (req,res)=>{
 })
 
 //Feedback Route
-router.get("/ViewAnonymizedFeedback", DecodeUser, ViewAnonymizedFeedback, (req,res)=>{
+router.post("/ViewAnonymizedFeedback", ViewAnonymizedFeedback, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
 

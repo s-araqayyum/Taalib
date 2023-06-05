@@ -52,7 +52,7 @@
 }
 
 .cute-button {
-  background-color: #c0e2e2;
+  background-color: #80C2D0;
   color: white;
   border: none;
   margin: 10px;
@@ -65,7 +65,7 @@
 }
 
 .cute-button:hover {
-  background-color: #80C2D0;
+  background-color: #6297a3;
   color: white;
 }
 
@@ -89,9 +89,9 @@ input[type="date"],
 input[type="text"] {
   width: 19%;
   padding: 8px;
-  border: 1px solid #E5F4F4;
+  border: 1px solid #6297a3;
   border-radius: 5px;
-  background-color: #ffffff;
+  background-color: #b3e6e6;
   color: #333333;
   font-size: 14px;
   transition: border-color 0.3s ease;
@@ -142,12 +142,104 @@ th, td {
   transition: background-color 0.3s ease;
 }
 
-.cute-button:hover {
-  background-color: #80C2D0;
+.assessment-cute-button:hover {
+  background-color: #59473b;
   color: white;
 }
 
-.cute-button:focus {
+.assessment-container input[type="date"],
+.assessment-container input[type="text"] {
+  width: 19%;
+  padding: 8px;
+  border: 1px solid #d8cdc5;
+  border-radius: 5px;
+  background-color: #d8cdc5;
+  color: #333333;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.assessment-container input[type="date"]:focus,
+.assessment-container input[type="text"]:focus {
   outline: none;
+  border-color: #59473b;
+}
+
+.assessment-table{
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/*Feedback*/
+
+.feedback {
+  background-color: #7DCFB6;
+}
+
+.feedback img {
+  width: 40%;
+}
+
+.feedback input[type="date"],
+.feedback input[type="text"] {
+  width: 19%;
+  padding: 8px;
+  border: 1px solid #d6e6e6;
+  border-radius: 5px;
+  background-color: #bad4d4;
+  color: #333333;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+
+.feedback input[type="date"]:focus,
+.feedback input[type="text"]:focus {
+  outline: none;
+  border-color: #a8d6d6;
+}
+
+.fetch-feedback-button {
   background-color: #a8d6d6;
+  color: white;
+  border: none;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.fetch-feedback-button:hover {
+  background-color: #F1B514;
+  color: white;
+}
+
+.feedback-cards {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-content: center;
+  gap: 20px;
+  margin: 0 20px; 
+}
+
+.feedback-card {
+  background-color: rgba(255, 255, 255, 0.6); 
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feedback-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.feedback-text {
+  font-size: 16px;
+  color: #333333;
 }

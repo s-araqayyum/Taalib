@@ -89,8 +89,8 @@ export const updateAssessment = async (req, res) => {
 };
 
 export const deleteAssessment = async (req, res) => {
-    console.log('req.body from node.js deleteAssessment:', req.body);
-    const { teacherID, courseID, typeOfAssessment, date } = req.body;
+    console.log('req.body from node.js deleteAssessment:', req.query);
+    const { teacherID, courseID, typeOfAssessment, date } = req.query;
   
     try {
       const assessment = await Assesment.deleteMany({ teacherID, courseID, typeOfAssessment, date });
