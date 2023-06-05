@@ -1,5 +1,6 @@
 import Attendance from "../../Models/AttendanceModel.js";
 import { Student, Course } from "../../Models/StudentModel.js";
+import Teacher from "../../Models/TeacherModel.js";
 
 /*
 For a teacher managing attendance, the following functions are required:
@@ -14,7 +15,8 @@ a list-like manner, which is by default set to false.
 
 export const getAttendance = (req, res) => {
     console.log('req.body from node.js getAttendance:', req.body);
-    let { date, teacherID, courseID } = req.body;
+    let { date, courseID } = req.body;
+    let teacherID = req.decoded.id;
     Attendance.find({ date: date, teacherID: teacherID, courseID: courseID })
         .then((attendance) => {
         res.status(200).json({ attendance: attendance });
@@ -28,36 +30,27 @@ export const getAttendance = (req, res) => {
 
 export const addAttendance = async (req, res) => {
     console.log('req.body from node.js addAttendance:', req.body);
-    const { teacherID, courseID, date } = req.body;
+    const { courseID, date } = req.body;
+    let teacherID = req.decoded.id;
 
     let createdAttendance = null;
     let attendanceCreated = false;
+
+    const teacher = await Teacher.findOne({employeeId: teacherID});
+    console.log(teacher._id)
   
     try {
-      const students = await Student.find();
-      for (const student of students) {
-        for (const course of student.courses) {
-          const wantedCourse = await Course.findOne({ name: course.name });
-          if (wantedCourse != null) {
-            if(wantedCourse._id == courseID){
-              const attendanceRecords = students.map((student) => ({
-                studentID: student._id,
-                teacherID,
-                courseID,
-                date,
-                isPresent: false,
-              }));
-          
-              createdAttendance = await Attendance.create(attendanceRecords);
-              attendanceCreated = true;
-              break;
-            }
-          }
-        }
-        if (attendanceCreated) {
-          break;
-        }
-      }
+      const students = await Student.find({ 'courses._id': courseID, "courses.instructor": teacher._id });
+      const attendanceRecords = students.map((student) => ({
+        studentID: student._id,
+        teacherID,
+        courseID,
+        date,
+        isPresent: false,
+      }));
+  
+      createdAttendance = await Attendance.create(attendanceRecords);
+      attendanceCreated = true;
       if (attendanceCreated) {
         res.status(201).json({ success: true, attendance: createdAttendance });
       } else {
@@ -70,7 +63,8 @@ export const addAttendance = async (req, res) => {
 
 export const updateAttendance = async (req, res) => {
   console.log('req.body from node.js update-Attendance:', req.body);
-  const { studentID, teacherID, courseID, date, isPresent } = req.body;
+  const { studentID, courseID, date, isPresent } = req.body;
+  let teacherID = req.decoded.id;
 
   try {
     const attendance = await Attendance.findOneAndUpdate(
@@ -95,8 +89,9 @@ export const updateAttendance = async (req, res) => {
 
 
 export const deleteAttendance = (req, res) => {
+    let teacherID = req.decoded.id;
     console.log('req.body from node.js deleteAttendance:', req.query);
-    Attendance.deleteMany({ date: req.query.date, teacherID: req.query.teacherID, courseID: req.query.courseID })
+    Attendance.deleteMany({ date: req.query.date, courseID: req.query.courseID })
         .then((attendance) => {
         res.status(200).json({ attendance: attendance });
         }

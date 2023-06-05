@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+body {
+  background-color: #374D44;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -79,6 +83,7 @@
 }
 
 label {
+  margin-top: 20px;
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
@@ -174,13 +179,14 @@ th, td {
 /*Feedback*/
 
 .feedback {
-  background-color: #6a6b73;
   width: 100%;
   height: 100%;
 }
 
 .feedback img {
   width: 40%;
+  margin-right: 40px;
+  margin-top: 100px;
 }
 
 .feedback input[type="date"],
@@ -216,8 +222,8 @@ th, td {
 }
 
 .fetch-feedback-button:hover {
-  background-color: #000000;
-  color: white;
+  background-color: #f6f5f5;
+  color: #3a4747;
 }
 
 .feedback-cards {
@@ -239,7 +245,10 @@ th, td {
 .feedback-card:hover {
   transform: scale(1.05);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.6); /* Adjust the opacity value as needed */
+  background-image: url("https://img1.picmix.com/output/stamp/normal/3/8/5/9/1989583_0ef5d.gif");
 }
+
 
 .feedback-text {
   font-size: 16px;
@@ -266,6 +275,22 @@ th, td {
   height: 100vh; 
 }
 
+.logout-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  color: #f2f2f2;
+  opacity: 0.3;
+  border: none;
+  background-color: transparent;
+  font-size: 12px;
+}
+
+.logout-button:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
 .card {
   width: 300px;
   height: 300px;
@@ -273,7 +298,7 @@ th, td {
   border-radius: 10px;
   margin: 10px;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 1.05s ease;
 }
 
 .card:hover {
@@ -289,4 +314,167 @@ th, td {
 
 .card-content {
   padding: 10px;
+}
+
+/*Login*/
+.login {
+  background-color: #374d44;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+}
+
+.logincard {
+  display: none;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+  opacity: 60%;
+}
+
+.logincard {
+  display: none;
+  animation: slide-in 0.5s forwards;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.logincard.show {
+  display: block;
+}
+
+.logincard img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.logincard .card-content {
+  margin-top: 10px;
+}
+
+.logincard h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.logincard p {
+  font-size: 14px;
+  color: #777;
+}
+
+.login input[type="password"],
+.login input[type="text"] {
+  width: 19%;
+  padding: 8px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333333;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.login button {
+  width: 19%;
+  margin-left: 10px;
+  padding: 8px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333333;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.login button:hover {
+  background-color: #374D44;
+  color: white;
+}
+
+/*Misc*/
+
+.unauth {
+  background: #374D44;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+.error__wrapper {
+  text-align: center;
+}
+.error__wrapper h1 {
+ text-align: center;
+ display: flex;
+align-items: center;
+justify-content: center;
+  font-size: 5rem;
+  color: #fff;
+  margin: 0;
+}
+
+.error__wrapper h1,
+.error__wrapper p {
+  color: #fff;
+}
+
+.error__wrapper p {
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+.error__wrapper img {
+  max-width: 130px;
+}
+
+.error__wrapper a {
+  background: #fff;
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  padding: 0.5rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  margin-top: 3rem;
+  transition: 0.3s all ease-in;
+  border:1px solid #fff;
+}
+
+.error__wrapper a:hover {
+  background: #000;
+  color: #fff;
+}
+
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  z-index: 9999;
+  opacity: 0.9;
+  background-image: url("https://i.pinimg.com/originals/03/9d/22/039d2254b392f492ecda534bd7a848f3.gif");
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  /* Add any additional styles to make the close button cute */
 }

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Attendance = () => {
-  
+  const navigate = useNavigate();
   const [date, setDate] = useState('');
   const [teacherID, setTeacherID] = useState('');
   const [courseID, setCourseID] = useState('');
@@ -11,40 +12,51 @@ const Attendance = () => {
 
   useEffect(() => {
     getAttendance();
-  }, []); // Fetch attendance on initial load
-
-  /*export const getAttendance = (req, res) => {
-    console.log('req.body from node.js getAttendance:', req.body);
-    let { date, teacherID, courseID } = req.body;
-    Attendance.find({ date: date, teacherID: teacherID, courseID: courseID })
-        .then((attendance) => {
-        res.status(200).json({ attendance: attendance });
-        }
-        )
-        .catch((err) => {
-        res.status(500).json({ err: err });
-        }
-        );
-} */
+  }, []); 
 
   const getAttendance = () => {
+
+    const token = localStorage.getItem('token'); 
+
     axios
       .post('http://localhost:3001/teacher/getAttendance', {
-         date, teacherID, courseID
+        date,
+        teacherID,
+        courseID
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       })
       .then((response) => {
         console.log(response.data);
         setAttendance(response.data.attendance);
+
+        if (date !== '') {
+          if (response.data.attendance.length === 0) {
+            alert('No attendance found for this date');
+          }
+        }
       })
       .catch((error) => {
         console.log(error);
+        if (error.response.status === 403) {
+          navigate('/unauthorized');
+        }
       });
   };
 
 
   const addAttendance = () => {
+
+    const token = localStorage.getItem('token'); 
+
     axios
-      .post('http://localhost:3001/teacher/addAttendance', { teacherID, courseID, date })
+      .post('http://localhost:3001/teacher/addAttendance', { teacherID, courseID, date }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       .then((response) => {
         console.log(response.data);
         getAttendance(); 
@@ -55,8 +67,15 @@ const Attendance = () => {
   };
 
   const updateAttendance = (studentID, isPresent) => {
+
+    const token = localStorage.getItem('token')
+
     axios
-      .put('http://localhost:3001/teacher/updateAttendance', { studentID, teacherID, courseID, date, isPresent })
+      .put('http://localhost:3001/teacher/updateAttendance', { studentID, teacherID, courseID, date, isPresent }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       .then((response) => {
         console.log(response.data);
         getAttendance();
@@ -67,18 +86,24 @@ const Attendance = () => {
   };
 
   const deleteAttendance = () => {
+    const token = localStorage.getItem('token');
+  
     axios
       .delete('http://localhost:3001/teacher/deleteAttendance', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         params: { date, teacherID, courseID },
       })
       .then((response) => {
         console.log(response.data);
-        getAttendance(); 
+        getAttendance();
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  
 
   return (
     <div className='attendance-container'>
@@ -92,16 +117,6 @@ const Attendance = () => {
           id="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-          className="form-input"
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="teacherID">Teacher ID:</label>
-        <input
-          type="text"
-          id="teacherID"
-          value={teacherID}
-          onChange={(e) => setTeacherID(e.target.value)}
           className="form-input"
         />
       </div>

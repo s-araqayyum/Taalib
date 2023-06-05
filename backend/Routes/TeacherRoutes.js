@@ -9,16 +9,16 @@ const router = express.Router();
 router.post("/login", login);
 
 //All Assessment Routes
-router.post("/addAssessment", addAssessment, (req,res)=>{
+router.post("/addAssessment", DecodeUser, addAssessment, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
-router.put("/updateAssessment", updateAssessment, (req,res)=>{
+router.put("/updateAssessment", DecodeUser, updateAssessment, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
-router.delete("/deleteAssessment", deleteAssessment, (req,res)=>{
+router.delete("/deleteAssessment", DecodeUser, deleteAssessment, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
-router.post("/getAssessment", getAssessment, (req,res)=>{
+router.post("/getAssessment", DecodeUser, getAssessment, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
 
@@ -29,22 +29,22 @@ router.post("/generateGrade", DecodeUser, generateGrade, (req,res)=>{
 
 
 //All Attendance Routes
-router.post("/addAttendance", addAttendance, (req,res)=>{
+router.post("/addAttendance", DecodeUser, addAttendance, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
 
-router.put("/updateAttendance", updateAttendance, (req,res)=>{
+router.put("/updateAttendance", DecodeUser, updateAttendance, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
-router.delete("/deleteAttendance", deleteAttendance, (req,res)=>{
+router.delete("/deleteAttendance", DecodeUser, deleteAttendance, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
-router.post("/getAttendance", getAttendance, (req,res)=>{
+router.post("/getAttendance", DecodeUser, getAttendance, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
 
 //Feedback Route
-router.post("/ViewAnonymizedFeedback", ViewAnonymizedFeedback, (req,res)=>{
+router.post("/ViewAnonymizedFeedback", DecodeUser, ViewAnonymizedFeedback, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
 
