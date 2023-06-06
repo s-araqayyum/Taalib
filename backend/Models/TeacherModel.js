@@ -1,56 +1,68 @@
 import mongoose from 'mongoose';
 
-const CourseSchema = mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    instructor: {
-      type: String,
-      required: true
-    },    
-    taughtToClass:{
-      type: Number,
-      required: true
-    }
-},
-{timestamps:true}
-);
+const CourseSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  instructor: {
+    type: String,
+    required: true,
+  },
+  credits: {
+    type: Number,
+    required: true,
+  },
+  taughtToClass: {
+    type: Number,
+    required: true,
+  },
+  registrationDate: {
+    type: Date,
+    default: Date.now,
+    required: true,
+  },
+});
+
 
 const TeacherSchema = new mongoose.Schema({
-    name: {
-      type: String,
-      required: true
+  name: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  employeeId: {
+    type: String,
+    required: true,
+    unique: true
     },
-    email: {
-      type: String,
-      required: true,
-      unique: true
+  courses: {
+    type: [CourseSchema],
+    required: false
     },
-    employeeId: {
-      type: Number,
-      required: true,
-      unique: true
-      },
-    courses: {
-      type: [CourseSchema],
-      required: true
-      },
-      role: {
-      type: String,
-      default: "Teacher",
-      required: true
-    },
-    joiningDate: {
-      type: Date,
-      default: Date.now
-    },
+    role: {
+    type: String,
+    default: "Teacher",
+    required: true
+  },
+  joiningDate: {
+    type: Date,
+    default: Date.now
+  },
     password: {
       type: String,
       required: true
+    },
+    isSalaryPaid:{
+      type: Boolean,
+      required: false,
+      default: false
     }
-},
-{timestamps:true});
+});
 
 const Teacher = mongoose.model('Teacher', TeacherSchema);
 export default Teacher;
