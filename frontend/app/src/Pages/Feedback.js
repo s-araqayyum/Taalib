@@ -29,6 +29,9 @@ const Feedback = () => {
         .then((response) => {
           console.log(response.data);
           setFeedback(response.data.feedback);
+          if (response.data.feedback.length === 0 && courseID !== '') {
+            alert('No feedback found for this course');
+          }
         })
         .catch((error) => {
           console.log(error);
