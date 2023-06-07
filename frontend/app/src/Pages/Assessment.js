@@ -92,9 +92,38 @@ const Assessment = () => {
   const addAssessment = () => {
 
     const token = localStorage.getItem('token');
-    let typeOfAssessment = prompt("Enter the type of assessment you want to add:")
-    let totalMarks = prompt("Enter the total marks of the assessment:")
-    let weightage = prompt("Enter the weightage of the assessment:")
+    let typeOfAssessment;
+    while (true) {
+      typeOfAssessment = prompt("Enter the type of assessment you want to add:");
+      
+      if(assessment.some((element) => element.typeOfAssessment === typeOfAssessment)) {
+        alert("Entry for this assessment already exists. Please update the assessment instead.");
+      }
+      else{
+        if (typeOfAssessment.trim() !== '') {
+          break;
+        }
+        alert("Please enter a non-empty value for the type of assessment.");
+      }
+    }
+
+    let totalMarks;
+    while (true) {
+      totalMarks = prompt("Enter the total marks of the assessment:");
+      if (totalMarks.trim() !== '' && !isNaN(parseFloat(totalMarks)) && parseFloat(totalMarks) >= 0) {
+        break;
+      }
+      alert("Please enter a non-negative number for the total marks.");
+    }
+
+    let weightage;
+    while (true) {
+      weightage = prompt("Enter the weightage of the assessment:");
+      if (weightage.trim() !== '' && !isNaN(parseFloat(weightage)) && parseFloat(weightage) >= 0 && parseFloat(weightage) < 100) {
+        break;
+      }
+      alert("Please enter a non-negative number below 100 for the weightage.");
+    }
     axios
       .post('http://localhost:3001/teacher/addAssessment', { teacherID, courseID, date, typeOfAssessment, totalMarks, weightage },
         {
@@ -108,6 +137,9 @@ const Assessment = () => {
       })
       .catch((error) => {
         console.log(error);
+        if (error.response.status === 409){
+          alert("Entry for this assessment already exists. Please update the assessment instead.");
+        }
       });
   };
 
@@ -193,22 +225,53 @@ const Assessment = () => {
             </tr>
             </thead>
             <tbody>
+            
             {assessment.map((assessment) => (
-                <tr key={assessment._id}>
+              <tr key={assessment._id}>
                 <td>{assessment.studentID}</td>
                 <td>{assessment.typeOfAssessment}</td>
                 <td>{assessment.totalMarks}</td>
                 <td>
-                    <input
-                        defaultValue={assessment.obtainedMarks}
-                        onChange={(e) =>
-                        updateAssessment(assessment.studentID, assessment.typeOfAssessment, assessment.date, e.target.value)
-                        }
-                    />
+                  <select
+                    value={assessment.obtainedMarks}
+                    onChange={(e) =>
+                      updateAssessment(
+                        assessment.studentID,
+                        assessment.typeOfAssessment,
+                        assessment.date,
+                        e.target.value
+                      )
+                    }
+                    style={{
+                      backgroundColor: 'transparent',
+                      border: 'none',
+                      borderRadius: '5px',
+                      padding: '5px',
+                      boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
+                      outline: 'none',
+                      cursor: 'pointer',
+                      appearance: 'none',
+                    }}
+                  >
+                    {[...Array(assessment.totalMarks + 1)].map((_, index) => (
+                      <option
+                        key={index}
+                        value={index}
+                        style={{
+                          fontFamily: 'Arial, sans-serif',
+                          fontSize: '16px',
+                          color: '#333',
+                          textShadow: '1px 1px 1px rgba(0, 0, 0, 0.1)',
+                        }}
+                      >
+                        {index}
+                      </option>
+                    ))}
+                  </select>
                 </td>
                 <td>{assessment.weightage}</td>
                 <td>{assessment.date}</td>
-                </tr>
+              </tr>
             ))}
             </tbody>
         </table>

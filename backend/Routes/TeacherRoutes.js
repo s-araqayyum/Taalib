@@ -2,6 +2,7 @@ import { addAssessment, updateAssessment, deleteAssessment, getAssessment, gener
 import { getAttendance, addAttendance, updateAttendance, deleteAttendance } from "../Controllers/TeacherFunctionality/AttendanceController.js";
 import { ViewAnonymizedFeedback } from "../Controllers/TeacherFunctionality/FeedbackController.js";
 import { login, DecodeUser } from "../Controllers/TeacherFunctionality/Authorization.js";
+import { findTeacher } from "../Controllers/TeacherFunctionality/Profile.js";
 
 import express from "express";
 const router = express.Router();
@@ -45,6 +46,11 @@ router.post("/getAttendance", DecodeUser, getAttendance, (req,res)=>{
 
 //Feedback Route
 router.post("/ViewAnonymizedFeedback", DecodeUser, ViewAnonymizedFeedback, (req,res)=>{
+    res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
+})
+
+//Profile
+router.get("/profile", DecodeUser, findTeacher, (req,res)=>{
     res.status(200).send({"Message":"You've been authorized and authenticated to perform this action as a teacher"})
 })
 
