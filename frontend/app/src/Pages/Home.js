@@ -1,5 +1,6 @@
 import React from 'react';
 import taalib from './logo.png'
+import axios from 'axios';
 import { useNavigate, Routes, Route } from 'react-router-dom';
 
 const Home = () => {
@@ -14,6 +15,25 @@ const Home = () => {
     localStorage.removeItem('token');
   };
 
+  const handleProfileClick = () => {
+    axios.get('http://localhost:3001/teacher/profile', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+    .then((response) => {
+      console.log(response.data.teacher.name);
+      let teacherName = response.data.teacher.name;
+      alert("This is the profile of " + teacherName + "["+response.data.teacher.employeeId+"]");
+      alert("Courses taught by " + teacherName + " are: " + response.data.teacher.courses.map(course => course.name).join(', '));
+
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
+
+
   if (!localStorage.getItem('token')) {
     navigate('/unauthorized');
   }
@@ -21,6 +41,8 @@ const Home = () => {
   return (
     <div className="home">
       <button className="logout-button" onClick={handleLogOut}><img style={{height:'20px'}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/OOjs_UI_icon_logOut-ltr-invert.svg/1024px-OOjs_UI_icon_logOut-ltr-invert.svg.png"></img></button>
+      
+      <button className="profile-button" onClick={handleProfileClick}><img style={{height:'20px'}} src="https://icon-library.com/images/white-flower-icon/white-flower-icon-19.jpg"></img></button>
 
       <img style={{ filter: 'invert(1)' }} src={taalib} alt="Taalib" />
       <div className="card" onClick={() => handleCardClick('/attendance')}>
